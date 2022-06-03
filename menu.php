@@ -63,29 +63,31 @@
       </div>
       <div class="carte">
         <!-- Gabarit de chaque section du menu -->
-        <?php
-          foreach ($menu as $nomSection => $plats) {
-        ?>
+        <?php foreach ($menu as $nomSection => $plats) : ?>
         <section>
           <h2><?= $nomSection ?></h2>
           <ul>
             <!-- Gabarit de chaque plat dans une section -->
-            <?php
-              foreach ($plats as $plat) {
-            ?>
+            <?php foreach ($plats as $plat) : ?>
             <li>
-              <span>Nom du plat<br><i>Détail du plat</i></span>
-              <span class="prix"><i class="article-menu-portion">(pour Portion personnes)</i>Prix</span>
+              <span>
+                <?= $plat->pla_nom ?>
+                <?php if($plat->pla_detail !== "") : ?>
+                  <br><i><?= $plat->pla_detail ?></i>
+                <?php endif ?>
+              </span>
+              <span class="prix">
+                <?php if($plat->pla_portion > 1) : ?>
+                  <i class="article-menu-portion">(pour <?= $plat->pla_portion ?> personnes)</i>
+                  <?php endif ?>
+                <?= $plat->pla_prix ?>
+              </span>
             </li>
-            <?php
-              }
-            ?>
+            <?php endforeach; ?>
             <!-- Fin - Gabarit Plat -->
           </ul>
         </section>
-        <?php
-          }
-        ?>
+        <?php endforeach; ?>
         <!-- Fin - Gabarit Section -->
       </div>
     </div>
