@@ -1,11 +1,11 @@
 <?php
   // Obtenir les données des plats (groupés par catégorie)
   $options = [PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_OBJ];
-  $pdo = new PDO("mysql:hote=localhost; dbname=leila; charset=utf8", 'root', '1234', $options);
+  $pdo = new PDO("mysql:hote=localhost; dbname=leila; charset=utf8", 'root', '', $options);
   $reqParamPDO = $pdo->prepare("SELECT cat_nom, plat.* FROM plat JOIN categorie ON pla_cat_id_ce=cat_id");
   $reqParamPDO->execute();
   $menu = $reqParamPDO->fetchAll(PDO::FETCH_GROUP);
-  //print_r($menu);
+ //print_r($menu);
 ?>
 <!DOCTYPE html>
 <html>
